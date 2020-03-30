@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
         this.canvas.nativeElement.getContext('2d').drawImage(this.videoElement.nativeElement, 0, 0)
 
         html2canvas(this.canvas.nativeElement).then(canvas => {                
-            this.canvasImg.nativeElement.src = canvas.toDataURL();
+            // this.canvasImg.nativeElement.src = canvas.toDataURL();
             this.downloadLink.nativeElement.href = canvas.toDataURL('image/png');
             this.downloadLink.nativeElement.download = 'marble-diagram.png';
             this.downloadLink.nativeElement.click();
