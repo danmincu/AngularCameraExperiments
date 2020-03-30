@@ -1,17 +1,40 @@
-<div class="container vh-100">
+<div class="pb-2">
+	<button class="btn btn-primary" (click)="capture()">Capture Image</button>
+</div>
+
+<div class=flexcontainer>
+	<div class="p-1">
+		<video #video1 class="vid" autoplay></video>
+	</div>
+	<div class="p-1">
+		<video #video2 class="vid" autoplay></video>
+	</div>
+</div>
+
+<div class="flexcontainer">
 	<div class="d-flex flex-column align-items-center">
+		
 		<div class="p-1">
-			<video #video class="vid" autoplay></video>
-		</div>
-		<div class="pb-2">
-			<button class="btn btn-primary" (click)="capture()">Capture Image</button>
-		</div>
-		<div class="p-1">
-			<canvas #canvas class="vid"></canvas>
+			<canvas #canvas1 class="vid"></canvas>
 		</div>
 		<div id="download">
-			<img #canvasImg>
-			<a #downloadLink></a>
+			<img #canvasImg1>
+			<a #downloadLink1></a>
 		  </div>
 	</div>
+
+	<div class="d-flex flex-column align-items-center">
+
+		<!-- <div class="pb-2">
+			<button class="btn btn-primary" (click)="capture1()">Capture Image</button>
+		</div> -->
+		<div class="p-1">
+			<canvas #canvas2 class="vid"></canvas>
+		</div>
+		<div id="download">
+			<img #canvasImg2>
+			<a #downloadLink2></a>
+		  </div>
+	</div>
+
 </div>
