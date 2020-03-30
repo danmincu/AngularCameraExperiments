@@ -115,12 +115,20 @@ export class AppComponent implements OnInit {
 
     capture() {
         
+        this.renderer.setProperty(this.canvas1.nativeElement, 'width', this.videoWidth * 2);
+        this.renderer.setProperty(this.canvas1.nativeElement, 'height', this.videoHeight);
+        
+        //for (let i = 0; i ++; i < 1000)    
+        {
         //https://stackblitz.com/edit/angular-html2canvas
         //console.log(this.canvas.nativeElement.getContext('2d').;
 
-        this.renderer.setProperty(this.canvas1.nativeElement, 'width', this.videoWidth);
-        this.renderer.setProperty(this.canvas1.nativeElement, 'height', this.videoHeight);
         this.canvas1.nativeElement.getContext('2d').drawImage(this.videoElement1.nativeElement, 0, 0)
+  
+
+        // this.renderer.setProperty(this.canvas2.nativeElement, 'width', this.videoWidth);
+        // this.renderer.setProperty(this.canvas2.nativeElement, 'height', this.videoHeight);
+        this.canvas1.nativeElement.getContext('2d').drawImage(this.videoElement2.nativeElement, this.videoWidth, 0)
 
         html2canvas(this.canvas1.nativeElement).then(canvas => {                
             // this.canvasImg.nativeElement.src = canvas.toDataURL();
@@ -129,34 +137,13 @@ export class AppComponent implements OnInit {
             this.downloadLink1.nativeElement.click();
             });
 
-        this.renderer.setProperty(this.canvas2.nativeElement, 'width', this.videoWidth);
-        this.renderer.setProperty(this.canvas2.nativeElement, 'height', this.videoHeight);
-        this.canvas2.nativeElement.getContext('2d').drawImage(this.videoElement2.nativeElement, 0, 0)
-
-        html2canvas(this.canvas2.nativeElement).then(canvas => {                
-            // this.canvasImg.nativeElement.src = canvas.toDataURL();
-            this.downloadLink2.nativeElement.href = canvas.toDataURL('image/png');
-            this.downloadLink2.nativeElement.download = 'marble-diagram.png';
-            this.downloadLink2.nativeElement.click();
-            });
-
-    }
-
-    capture1() {
-        
-        //https://stackblitz.com/edit/angular-html2canvas
-        //console.log(this.canvas.nativeElement.getContext('2d').;
-
-        this.renderer.setProperty(this.canvas2.nativeElement, 'width', this.videoWidth);
-        this.renderer.setProperty(this.canvas2.nativeElement, 'height', this.videoHeight);
-        this.canvas2.nativeElement.getContext('2d').drawImage(this.videoElement2.nativeElement, 0, 0)
-
-        html2canvas(this.canvas2.nativeElement).then(canvas => {                
-            // this.canvasImg.nativeElement.src = canvas.toDataURL();
-            this.downloadLink2.nativeElement.href = canvas.toDataURL('image/png');
-            this.downloadLink2.nativeElement.download = 'marble-diagram.png';
-            this.downloadLink2.nativeElement.click();
-            });
+        // html2canvas(this.canvas2.nativeElement).then(canvas => {                
+        //     // this.canvasImg.nativeElement.src = canvas.toDataURL();
+        //     this.downloadLink2.nativeElement.href = canvas.toDataURL('image/png');
+        //     this.downloadLink2.nativeElement.download = 'marble-diagram.png';
+        //     this.downloadLink2.nativeElement.click();
+        //     });
+        }
     }
 
     handleError(error) {
