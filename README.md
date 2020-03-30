@@ -1,6 +1,9 @@
 # Purpose 
 
-https://youtu.be/_5pMgoWXqbU
+Final video here https://youtu.be/_5pMgoWXqbU
+
+![Captures a set of images from two webcams](https://github.com/danmincu/AngularCameraExperiments/blob/master/Capture.JPG)
+
 
 
 # Capture
