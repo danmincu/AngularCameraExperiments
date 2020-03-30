@@ -4,7 +4,7 @@ Final video here https://youtu.be/_5pMgoWXqbU
 
 ![Captures a set of images from two webcams](https://github.com/danmincu/AngularCameraExperiments/blob/master/Capture.JPG)
 
-
+![The setup](https://raw.githubusercontent.com/danmincu/AngularCameraExperiments/master/demo.jpg)
 
 # Capture
 
