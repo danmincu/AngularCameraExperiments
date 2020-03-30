@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import * as html2canvas from 'html2canvas';
+import { timer } from 'rxjs';
+import { mergeMap, map, filter } from 'rxjs/operators';
 
 
 @Component({
@@ -118,32 +120,41 @@ export class AppComponent implements OnInit {
         this.renderer.setProperty(this.canvas1.nativeElement, 'width', this.videoWidth * 2);
         this.renderer.setProperty(this.canvas1.nativeElement, 'height', this.videoHeight);
         
-        //for (let i = 0; i ++; i < 1000)    
-        {
-        //https://stackblitz.com/edit/angular-html2canvas
-        //console.log(this.canvas.nativeElement.getContext('2d').;
+        let i = 0;
 
+        let tmr = setInterval(()=> { if (i++ < 100) this.save();  }, 100);
+
+        // timer(0, reloadInterval).pipe(
+        //   mergeMap(_ => this.save())
+        // ).subscribe()
+
+//         for (let i = 0; i < 50; i ++)    
+//         {
+//                 // setTimeout( () => 
+//                 // {
+//                     this.canvas1.nativeElement.getContext('2d').drawImage(this.videoElement1.nativeElement, 0, 0)
+//                     this.canvas1.nativeElement.getContext('2d').drawImage(this.videoElement2.nativeElement, this.videoWidth, 0)
+//                     html2canvas(this.canvas1.nativeElement).then(canvas => {                
+//                         // this.canvasImg.nativeElement.src = canvas.toDataURL();
+//                         this.downloadLink1.nativeElement.href = canvas.toDataURL('image/png');
+//                         this.downloadLink1.nativeElement.download = 'marble-diagram.png';
+//                         this.downloadLink1.nativeElement.click();
+//                         });
+// //                    }, 500);
+//         }
+    }
+
+    save()
+    {
         this.canvas1.nativeElement.getContext('2d').drawImage(this.videoElement1.nativeElement, 0, 0)
-  
-
-        // this.renderer.setProperty(this.canvas2.nativeElement, 'width', this.videoWidth);
-        // this.renderer.setProperty(this.canvas2.nativeElement, 'height', this.videoHeight);
         this.canvas1.nativeElement.getContext('2d').drawImage(this.videoElement2.nativeElement, this.videoWidth, 0)
-
         html2canvas(this.canvas1.nativeElement).then(canvas => {                
             // this.canvasImg.nativeElement.src = canvas.toDataURL();
             this.downloadLink1.nativeElement.href = canvas.toDataURL('image/png');
             this.downloadLink1.nativeElement.download = 'marble-diagram.png';
             this.downloadLink1.nativeElement.click();
             });
-
-        // html2canvas(this.canvas2.nativeElement).then(canvas => {                
-        //     // this.canvasImg.nativeElement.src = canvas.toDataURL();
-        //     this.downloadLink2.nativeElement.href = canvas.toDataURL('image/png');
-        //     this.downloadLink2.nativeElement.download = 'marble-diagram.png';
-        //     this.downloadLink2.nativeElement.click();
-        //     });
-        }
+        return true;
     }
 
     handleError(error) {
